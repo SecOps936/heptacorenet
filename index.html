@@ -1,219 +1,280 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Heptacorenet Technology</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  <head>
+    <title>Heptacorenet Technology</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-		<!-- Sidebar -->
-			<section id="sidebar">
-				<div class="inner">
-					<nav>
-						<ul>
-							<li><a href="#intro">Home</a></li>
-							<li><a href="#one">About Us</a></li>
-							<li><a href="#two">Services</a></li>
-							<li><a href="#three">Contact Us</a></li>
-						</ul>
-					</nav>
-				</div>
-			</section>
+    <style>
+      /* === Improved Image Visibility and Spacing === */
+      #one .image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        margin: 15px 0;
+      }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+      /* Add more space between sidebar and main content */
+      #wrapper {
+        margin-left: 270px; /* pushes content slightly away from sidebar */
+      }
 
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up" style="position: relative;">
-  <!-- Logo positioned in top-right -->
-  <section id="intro" class="wrapper style1 fullscreen fade-up" style="position: relative;">
-  <!-- Circular Logo in Top-Right -->
-  <img src="images/logo.png" alt="Heptacorenet Logo"
-       style="position: absolute; top: 20px; right: 20px; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; z-index: 1000;" />
-						<div class="inner">
-							<h1>HEPTACORENET</h1>
-							<p>Welcome to the center of innovation! Discover our revolutionary technologies and solutions that will shape the future.</p>
-						</div>
-					</section>
+      @media screen and (max-width: 980px) {
+        #wrapper {
+          margin-left: 0;
+        }
+      }
+	  #footer .inner {
+  text-align: center; /* center text horizontally */
+}
 
-				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Ultricies aliquam</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-								</div>
-							</div>
-						</section>
-					</section>
+#footer .menu {
+  display: inline-block; /* keeps the menu inline in the center */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 
-				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
-  <div class="inner">
-    <h2>What we do</h2>
-    <p>Heptacorenet provides comprehensive ICT services tailored to modern digital needs.</p>
-    <div class="features">
-      
-      <!-- Digital System Security -->
-      <section>
-        <span class="icon solid major fa-shield-alt"></span>
-        <h3>Digital System Security</h3>
-        <p>
-          Web Security, Penetration Testing, and Cybersecurity Awareness to protect your digital infrastructure from threats.
-        </p>
+#footer .menu li {
+  display: inline; /* make list items inline */
+  margin: 0 10px;  /* optional spacing between items */
+}
+    </style>
+  </head>
+
+  <body class="is-preload">
+    <!-- Sidebar -->
+    <section id="sidebar">
+      <div class="inner">
+        <nav>
+          <ul>
+            <li><a href="#intro">Home</a></li>
+            <li><a href="#one">About Us</a></li>
+            <li><a href="#two">Services</a></li>
+            <li><a href="#three">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Intro -->
+      <section id="intro" class="wrapper style1 fullscreen fade-up" style="position: relative;">
+        <div class="inner">
+          <h1>HEPTACORENET</h1>
+          <p>
+            Welcome to the center of innovation! Discover our revolutionary technologies and solutions that will shape the future.
+          </p>
+        </div>
       </section>
 
-      <!-- Networking -->
-      <section>
-        <span class="icon solid major fa-network-wired"></span>
-        <h3>Networking</h3>
-        <p>
-          Network Designing, Analysis, and Security for stable, and protected communication systems.
-        </p>
+      <!-- One -->
+      <section id="one" class="wrapper style2 spotlights">
+        <!-- Who We Are -->
+        <section>
+          <a href="#" class="image">
+            <img src="images/website.jpg" alt="About AstraSec" data-position="center center" />
+          </a>
+          <div class="content">
+            <div class="inner">
+              <h2>Who We Are</h2>
+              <p>
+                Heptacorenet Technologies is a passionate team of developers, cybersecurity professionals, digital forensics, network experts, and multimedia creatives committed to building secure, scalable, and intelligent technology solutions. We bridge the gap between development and security, ensuring that innovation and protection go hand in hand.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Our Mission & Vision -->
+        <section>
+          <a href="#" class="image">
+            <img src="images/mission.jpg" alt="Our Mission" data-position="top center" />
+          </a>
+          <div class="content">
+            <div class="inner">
+              <h2>Our Mission & Vision</h2>
+              <p>
+                Our mission is to empower individuals and organizations by developing technology that is secure by design. Our vision is to become a leading force in Africa’s digital transformation — creating a future where every system is both smart and secure.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Our Values & Focus -->
+        <section>
+          <a href="#" class="image">
+            <img src="images/11.jpg" alt="Core Values" data-position="25% 25%" />
+          </a>
+          <div class="content">
+            <div class="inner">
+              <h2>Our Core Values</h2>
+              <p>
+                <strong>Security First:</strong> We integrate cybersecurity at every stage of development.<br>
+                <strong>Innovation:</strong> We constantly evolve to stay ahead of technology threats.<br>
+                <strong>Excellence:</strong> We deliver high-quality, reliable, and scalable solutions.<br>
+                <strong>Collaboration:</strong> We believe in teamwork, partnership, and transparency.<br><br>
+                Together, we transform challenges into solutions.
+              </p>
+            </div>
+          </div>
+        </section>
       </section>
 
-      <!-- Web Development -->
-      <section>
-        <span class="icon solid major fa-laptop-code"></span>
-        <h3>Web Development</h3>
-        <p>
-          We build both static and dynamic websites that are fast, secure, and user-friendly.
-        </p>
+      <!-- Two -->
+      <section id="two" class="wrapper style3 fade-up">
+        <div class="inner">
+          <h2>What we do</h2>
+          <p>Heptacorenet provides comprehensive ICT services tailored to modern digital needs.</p>
+          <div class="features">
+            <section>
+              <span class="icon solid major fa-shield-alt"></span>
+              <h3>Digital System Security</h3>
+              <p>
+                Web Security, Penetration Testing, and Cybersecurity Awareness to protect your digital infrastructure from threats.
+              </p>
+            </section>
+
+            <section>
+              <span class="icon solid major fa-network-wired"></span>
+              <h3>Networking</h3>
+              <p>
+                Network Designing, Analysis, and Security for stable, and protected communication systems.
+              </p>
+            </section>
+
+            <section>
+              <span class="icon solid major fa-laptop-code"></span>
+              <h3>Web Development</h3>
+              <p>
+                We build both static and dynamic websites that are fast, secure, and user-friendly.
+              </p>
+            </section>
+
+            <section>
+              <span class="icon solid major fa-photo-video"></span>
+              <h3>Multimedia</h3>
+              <p>
+                Graphic designing, video editing, logo designing, and social media management.
+              </p>
+            </section>
+
+            <section>
+              <span class="icon solid major fa-database"></span>
+              <h3>Database Management</h3>
+              <p>
+                Secure and efficient management of your data through custom-designed database systems and optimization.
+              </p>
+            </section>
+
+            <section>
+              <span class="icon solid major fa-download"></span>
+              <h3>Software Installation</h3>
+              <p>
+                Professional installation and setup of software tools, operating systems, and application suites for all your devices.
+              </p>
+            </section>
+          </div>
+        </div>
       </section>
 
-      <!-- Multimedia -->
-      <section>
-        <span class="icon solid major fa-photo-video"></span>
-        <h3>Multimedia</h3>
-        <p>
-         graphic designing , video editing ,  logo designing and social media management.
-        </p>
-      </section>
+      <!-- Three -->
+      <section id="three" class="wrapper style1 fade-up">
+        <div class="inner">
+          <h2>Get in Touch</h2>
+          <p>
+            Have a project in mind or need cybersecurity and development support? 
+            Reach out to <strong>Heptacorenet Technologies</strong>, your trusted partner in building secure, innovative digital solutions. 
+            We’re here to connect, collaborate, and create.
+          </p>
+          <div class="split style1">
+            <section>
+              <form method="post" action="#">
+                <div class="fields">
+                  <div class="field half">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" />
+                  </div>
+                  <div class="field half">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" />
+                  </div>
+                  <div class="field">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" rows="5"></textarea>
+                  </div>
+                </div>
+                <ul class="actions">
+                  <li><a href="#" class="button submit">Send Message</a></li>
+                </ul>
+              </form>
+            </section>
 
-      <!-- Database Management -->
-      <section>
-        <span class="icon solid major fa-database"></span>
-        <h3>Database Management</h3>
-        <p>
-          Secure and efficient management of your data through custom-designed database systems and optimization.
-        </p>
-      </section>
+            <section>
+              <ul class="contact">
+                <li>
+                  <h3>Address</h3>
+                  <span>41218 Iyumbu Benjamin Mkapa Road<br />
+                    Dodoma, Tanzania</span>
+                </li>
+                <li>
+                  <h3>Email</h3>
+                  <a href="mailto:heptacorenet@gmail.com">heptacorenet@gmail.com</a>
+                </li>
+                <li>
+                  <h3>Phone</h3>
+                  <span>+255 654 756 617</span>
+                </li>
+                <li>
+                  <h3>Social</h3>
+                  <ul class="icons">
+  <!-- WhatsApp -->
+  <li>
+    <a href="https://whatsapp.com/channel/0029Vb5qMZBGk1FoSVNHbV0Q" target="_blank" class="icon brands fa-whatsapp">
+      <span class="label">WhatsApp</span>
+    </a>
+  </li>
+  <!-- Instagram -->
+  <li>
+    <a href="https://www.instagram.com/heptacorenet_?igsh=MWNwZGN5dmJia2Y0" target="_blank" class="icon brands fa-instagram">
+      <span class="label">Instagram</span>
+    </a>
+  </li>
 
-      <!-- Software Installation -->
-      <section>
-        <span class="icon solid major fa-download"></span>
-        <h3>Software Installation</h3>
-        <p>
-          Professional installation and setup of software tools, operating systems, and application suites for all your devices.
-        </p>
+  <!-- LinkedIn -->
+  <li>
+    <a href="https://www.linkedin.com/in/heptacorenet-technologies-978a67370" target="_blank" class="icon brands fa-linkedin-in">
+      <span class="label">LinkedIn</span>
+    </a>
+  </li>
+</ul>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
       </section>
-      
     </div>
-  </div>
-</section>
 
+    <!-- Footer -->
+    <footer id="footer" class="wrapper style1-alt">
+      <div class="inner">
+        <ul class="menu">
+          <li>&copy; Heptacorenet All rights reserved 2025-2030.</li>
+        </ul>
+      </div>
+    </footer>
 
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Get in touch</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
-							<div class="split style1">
-								<section>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" />
-											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>Address</h3>
-											<span>12345 Somewhere Road #654<br />
-											Nashville, TN 00000-0000<br />
-											USA</span>
-										</li>
-										<li>
-											<h3>Email</h3>
-											<a href="#">user@untitled.tld</a>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<span>(000) 000-0000</span>
-										</li>
-										<li>
-											<h3>Social</h3>
-											<ul class="icons">
-												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-											</ul>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-					</section>
-
-			</div>
-
-		<!-- Footer -->
-			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li>
-					</ul>
-				</div>
-			</footer>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
