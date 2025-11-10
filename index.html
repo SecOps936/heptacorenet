@@ -15,26 +15,43 @@
         border-radius: 10px;
         margin: 15px 0;
       }
+
       #wrapper {
         margin-left: 270px;
       }
+
       @media screen and (max-width: 980px) {
         #wrapper {
           margin-left: 0;
         }
       }
+
       #footer .inner {
         text-align: center;
       }
+
       #footer .menu {
         display: inline-block;
         padding: 0;
         margin: 0;
         list-style: none;
       }
+
       #footer .menu li {
         display: inline;
         margin: 0 10px;
+      }
+
+      /* Success message styling */
+      #success-message {
+        display: none;
+        background: #28a745;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-top: 15px;
+        font-weight: bold;
+        text-align: center;
       }
     </style>
   </head>
@@ -153,26 +170,25 @@
 
           <div class="split style1">
             <section>
-              <form id="contactForm"
-                    action="https://formspree.io/f/mvgdooag"
-                    method="POST">
+              <form id="contactForm" action="https://formspree.io/f/mvgdooag" method="POST" autocomplete="off" novalidate>
                 <div class="fields">
                   <div class="field half">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" required />
+                    <input type="text" name="name" id="name" required autocomplete="off"/>
                   </div>
                   <div class="field half">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required />
+                    <input type="email" name="email" id="email" required autocomplete="off"/>
                   </div>
                   <div class="field">
                     <label for="message">Message</label>
-                    <textarea name="message" id="message" rows="5" required></textarea>
+                    <textarea name="message" id="message" rows="5" required autocomplete="off"></textarea>
                   </div>
                 </div>
                 <ul class="actions">
                   <li><button type="submit" class="button submit">Send Message</button></li>
                 </ul>
+                <div id="success-message">✅ Message sent successfully!</div>
               </form>
             </section>
 
@@ -215,22 +231,49 @@
     <script src="assets/js/main.js" defer></script>
 
     <script>
-      document.getElementById('contactForm').addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const form = e.target;
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contactForm");
+        const successMsg = document.getElementById("success-message");
+        const button = form.querySelector(".submit");
 
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
+        // Ensure browser doesn't remember values
+        window.onbeforeunload = () => form.reset();
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault(); // prevent reload
+
+          button.disabled = true;
+          button.textContent = "Sending...";
+
+          try {
+            const response = await fetch(form.action, {
+              method: form.method,
+              body: new FormData(form),
+              headers: { Accept: "application/json" },
+            });
+
+            if (response.ok) {
+              // clear inputs immediately
+              form.reset();
+
+              // show success message
+              successMsg.style.display = "block";
+
+              // restore button
+              button.disabled = false;
+              button.textContent = "Send Message";
+
+              // hide message after 5 seconds
+              setTimeout(() => successMsg.style.display = "none", 5000);
+            } else {
+              throw new Error("Form submission failed");
+            }
+          } catch (err) {
+            alert("⚠️ Something went wrong. Please try again.");
+            button.disabled = false;
+            button.textContent = "Send Message";
+          }
         });
-
-        if (response.ok) {
-          form.reset();
-          window.location.href = "success.html";
-        } else {
-          alert("Oops! Something went wrong. Please try again.");
-        }
       });
     </script>
   </body>
