@@ -192,25 +192,25 @@
           </p>
           <div class="split style1">
             <section>
-              <form method="post" action="#">
-                <div class="fields">
-                  <div class="field half">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" />
-                  </div>
-                  <div class="field half">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" />
-                  </div>
-                  <div class="field">
-                    <label for="message">Message</label>
-                    <textarea name="message" id="message" rows="5"></textarea>
-                  </div>
-                </div>
-                <ul class="actions">
-                  <li><a href="#" class="button submit">Send Message</a></li>
-                </ul>
-              </form>
+              <form id="contactForm" method="post" action="#">
+  <div class="fields">
+    <div class="field half">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" required />
+    </div>
+    <div class="field half">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required />
+    </div>
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea name="message" id="message" rows="5" required></textarea>
+    </div>
+  </div>
+  <ul class="actions">
+    <li><button type="submit" class="button submit">Send Message</button></li>
+  </ul>
+</form>
             </section>
 
             <section>
@@ -273,5 +273,16 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+  // Get the form element
+  const form = document.getElementById('contactForm');
+
+  // Prevent default submission and clear fields
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent page reload
+    alert('Message sent successfully!'); // optional message
+    form.reset(); // clears all inputs
+  });
+</script>
   </body>
 </html>
