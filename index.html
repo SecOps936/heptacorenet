@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>Heptacorenet Technology</title>
+
+    <!-- Preload main CSS for faster rendering -->
+    <link rel="preload" href="assets/css/main.css" as="style">
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
@@ -84,7 +87,7 @@
       <!-- One -->
       <section id="one" class="wrapper style2 spotlights">
         <section>
-          <a href="#" class="image"><img src="images/website.jpg" alt="About AstraSec" /></a>
+          <a href="#" class="image"><img src="images/website.jpg" loading="lazy" alt="About AstraSec" /></a>
           <div class="content">
             <div class="inner">
               <h2>Who We Are</h2>
@@ -94,7 +97,7 @@
         </section>
 
         <section>
-          <a href="#" class="image"><img src="images/mission.jpg" alt="Our Mission" /></a>
+          <a href="#" class="image"><img src="images/mission.jpg" loading="lazy" alt="Our Mission" /></a>
           <div class="content">
             <div class="inner">
               <h2>Our Mission & Vision</h2>
@@ -104,7 +107,7 @@
         </section>
 
         <section>
-          <a href="#" class="image"><img src="images/11.jpg" alt="Core Values" /></a>
+          <a href="#" class="image"><img src="images/11.jpg" loading="lazy" alt="Core Values" /></a>
           <div class="content">
             <div class="inner">
               <h2>Our Core Values</h2>
@@ -174,15 +177,15 @@
                 <div class="fields">
                   <div class="field half">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" required autocomplete="off"/>
+                    <input type="text" name="name" id="name" required />
                   </div>
                   <div class="field half">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required autocomplete="off"/>
+                    <input type="email" name="email" id="email" required />
                   </div>
                   <div class="field">
                     <label for="message">Message</label>
-                    <textarea name="message" id="message" rows="5" required autocomplete="off"></textarea>
+                    <textarea name="message" id="message" rows="5" required></textarea>
                   </div>
                 </div>
                 <ul class="actions">
@@ -221,7 +224,7 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Scripts: load asynchronously for better speed -->
     <script src="assets/js/jquery.min.js" defer></script>
     <script src="assets/js/jquery.scrollex.min.js" defer></script>
     <script src="assets/js/jquery.scrolly.min.js" defer></script>
@@ -231,44 +234,30 @@
     <script src="assets/js/main.js" defer></script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
+      window.addEventListener("load", () => {
         const form = document.getElementById("contactForm");
         const successMsg = document.getElementById("success-message");
         const button = form.querySelector(".submit");
 
-        // Ensure browser doesn't remember values
-        window.onbeforeunload = () => form.reset();
-
         form.addEventListener("submit", async (e) => {
-          e.preventDefault(); // prevent reload
-
+          e.preventDefault();
           button.disabled = true;
           button.textContent = "Sending...";
 
           try {
-            const response = await fetch(form.action, {
+            const res = await fetch(form.action, {
               method: form.method,
               body: new FormData(form),
               headers: { Accept: "application/json" },
             });
-
-            if (response.ok) {
-              // clear inputs immediately
+            if (res.ok) {
               form.reset();
-
-              // show success message
               successMsg.style.display = "block";
-
-              // restore button
               button.disabled = false;
               button.textContent = "Send Message";
-
-              // hide message after 5 seconds
-              setTimeout(() => successMsg.style.display = "none", 5000);
-            } else {
-              throw new Error("Form submission failed");
-            }
-          } catch (err) {
+              setTimeout(() => (successMsg.style.display = "none"), 4000);
+            } else throw new Error();
+          } catch {
             alert("⚠️ Something went wrong. Please try again.");
             button.disabled = false;
             button.textContent = "Send Message";
