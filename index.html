@@ -7,7 +7,7 @@
 
     <!-- Preload main CSS for faster rendering -->
     <link rel="preload" href="assets/css/main.css" as="style">
-    <link rel="stylesheet" href="assets/css/main.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
@@ -93,7 +93,7 @@
       <!-- One -->
       <section id="one" class="wrapper style2 spotlights">
         <section>
-          <a href="#" class="image"><img src="images/img01.webp" alt="" loading="lazy" /></a>
+          <a href="#" class="image"><img src="images/img01.jpg" alt="" data-position="center center" /></a>
           <div class="content">
             <div class="inner">
               <h2>OUR MISSION</h2>
@@ -102,7 +102,7 @@
           </div>
         </section>
         <section>
-          <a href="#" class="image"><img src="images/img02.webp" alt="" loading="lazy" /></a>
+          <a href="#" class="image"><img src="images/img02.jpg" alt="" data-position="top center" /></a>
           <div class="content">
             <div class="inner">
               <h2>OUR EXPERTISE</h2>
@@ -234,50 +234,52 @@
     <script src="assets/js/breakpoints.min.js" defer></script>
     <script src="assets/js/util.js" defer></script>
     <script src="assets/js/main.js" defer></script>
-    <script>
-      window.addEventListener("load", () => {
-        const form = document.getElementById("contactForm");
-        const successMsg = document.getElementById("success-message");
-        const button = form.querySelector(".submit");
+  <script>
+  window.addEventListener("load", () => {
+    const form = document.getElementById("contactForm");
+    const successMsg = document.getElementById("success-message");
+    const button = form.querySelector(".submit");
 
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          button.disabled = true;
-          button.textContent = "Sending...";
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); // Stop page reload
+      button.disabled = true;
+      button.textContent = "Sending...";
 
-          try {
-            const res = await fetch(form.action, {
-              method: form.method,
-              body: new FormData(form),
-              headers: { Accept: "application/json" },
-            });
-
-            if (res.ok) {
-              // Clear all fields immediately
-              form.querySelectorAll("input, textarea").forEach(field => {
-                field.value = "";
-                field.setAttribute("value", "");
-                field.blur();
-              });
-
-              // Show success message
-              successMsg.classList.add("show");
-              successMsg.textContent = "✅ Message sent successfully!";
-
-              button.disabled = false;
-              button.textContent = "Send Message";
-
-              setTimeout(() => successMsg.classList.remove("show"), 5000);
-            } else {
-              throw new Error("Server error");
-            }
-          } catch (error) {
-            alert("⚠️ Something went wrong. Please try again.");
-            button.disabled = false;
-            button.textContent = "Send Message";
-          }
+      try {
+        const res = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
         });
-      });
-    </script>
+
+        if (res.ok) {
+  // Clear all form fields
+  form.querySelectorAll("input, textarea").forEach(field => {
+    field.value = "";               // Clear visible content
+    field.setAttribute("value", ""); // Clear any cached value
+    field.blur();                   // Remove focus to prevent autofill
+  });
+
+  // Show success message
+  successMsg.classList.add("show");
+  successMsg.textContent = "✅ Message sent successfully!";
+
+  // Reset button
+  button.disabled = false;
+  button.textContent = "Send Message";
+
+  // Hide success message after 5 seconds
+  setTimeout(() => successMsg.classList.remove("show"), 5000);
+} else {
+          throw new Error("Server error");
+        }
+      } catch (error) {
+        alert("⚠️ Something went wrong. Please try again.");
+        button.disabled = false;
+        button.textContent = "Send Message";
+      }
+    });
+  });
+</script>
   </body>
 </html>
