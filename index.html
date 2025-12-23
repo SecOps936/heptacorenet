@@ -11,6 +11,7 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
+      /* ===== Images ===== */
       #one .image img {
         width: 100%;
         height: auto;
@@ -19,6 +20,7 @@
         margin: 15px 0;
       }
 
+      /* ===== Wrapper ===== */
       #wrapper {
         margin-left: 270px;
       }
@@ -29,6 +31,7 @@
         }
       }
 
+      /* ===== Footer ===== */
       #footer .inner {
         text-align: center;
       }
@@ -45,7 +48,7 @@
         margin: 0 10px;
       }
 
-      /* Success message styling */
+      /* ===== Success Message ===== */
       #success-message {
         display: none;
         background: #28a745;
@@ -58,14 +61,206 @@
         opacity: 0;
         transition: opacity 1s ease-in-out;
       }
+
       #success-message.show {
         display: block;
         opacity: 1;
       }
+
+      /* ===== HEADER LOGO (INTRO ONLY) ===== */
+      .header-logo {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        z-index: 1000;
+      }
+
+      .header-logo img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #fff;
+        padding: 10px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        transition: transform 0.3s ease;
+      }
+
+      .header-logo img:hover {
+        transform: scale(1.05);
+      }
+
+      @media screen and (max-width: 980px) {
+        .header-logo {
+          top: 20px;
+          right: 20px;
+        }
+
+        .header-logo img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+#team {
+  background: linear-gradient(135deg, #6c63ff, #3f3fff);
+  padding: 2em 0 2em 0;
+  text-align: center;
+  color: #fff;
+}
+
+.team-header h2 {
+  margin-bottom: 0.3em;
+  font-size: 2.4em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.team-header p {
+  font-size: 1.1em;
+  max-width: 750px;
+  margin: 0 auto 1.5em auto;
+  line-height: 1.5;
+  color: #e0e0ffcc;
+}
+
+.team-slider {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.team-track {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.team-slide {
+  position: relative;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px; /* adjust height as needed */
+}
+
+.team-slide img {
+  width: 400px;        /* fixed width for uniform circles */
+  height: 550px;       /* fixed height for uniform circles */
+  object-fit: cover;   /* keep image proportionate */
+  border-radius: 50%;  /* makes the image a circle */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* optional: nice shadow */
+  transition: transform 0.3s ease;
+}
+.team-slide img:hover {
+  transform: scale(1.05); /* subtle hover zoom */
+}
+.team-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1.2em 1.5em;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.1));
+  border-radius: 0 0 15px 15px;
+  text-align: center;
+}
+
+.team-info h3 {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.team-info span {
+  color: #d0d0ff;
+  font-size: 0.95em;
+}
+
+.team-dots {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.team-dots span {
+  width: 14px;
+  height: 14px;
+  background: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.team-dots span.active {
+  background: #fff;
+  transform: scale(1.2);
+}
+.full-width-paragraph {
+  width: 100%;          /* full width */
+  max-width: none;      /* remove any max-width */
+  text-align: left;     /* align text to the left */
+  margin: 0;            /* remove extra auto margins */
+  line-height: 1.6;     /* better readability */
+  color: #e0e0ffcc;     /* keep your team section text color */
+  font-size: 1.1em;     /* adjust font size if needed */
+}
+@media screen and (max-width: 768px) {
+  .team-slide {
+    height: 400px;
+  }
+  .team-info h3 {
+    font-size: 1.2em;
+  }
+  .team-info span {
+    font-size: 0.9em;
+  }
+}
+/* ===== MOBILE HAMBURGER MENU ===== */
+#mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 35px;
+  height: 25px;
+  z-index: 2000;
+  cursor: pointer;
+}
+
+#mobile-menu-toggle span {
+  display: block;
+  height: 4px;
+  background: #fff;
+  margin: 5px 0;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Show only on tablets & phones */
+@media screen and (max-width: 980px) {
+  #mobile-menu-toggle {
+    display: block;
+  }
+
+  #sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  body.sidebar-open #sidebar {
+    transform: translateX(0);
+  }
+}
     </style>
   </head>
 
   <body class="is-preload">
+
     <!-- Sidebar -->
     <section id="sidebar">
       <div class="inner">
@@ -74,6 +269,7 @@
             <li><a href="#intro">Home</a></li>
             <li><a href="#one">About Us</a></li>
             <li><a href="#two">Services</a></li>
+            <li><a href="#team">Team</a></li>
             <li><a href="#three">Contact Us</a></li>
           </ul>
         </nav>
@@ -82,31 +278,53 @@
 
     <!-- Wrapper -->
     <div id="wrapper">
+
       <!-- Intro -->
       <section id="intro" class="wrapper style1 fullscreen fade-up">
         <div class="inner">
+
+          <!-- Header Logo -->
+          <div class="header-logo">
+            <a href="#intro">
+              <img src="images/Heptacorenet Logo.png" alt="Heptacorenet Logo">
+            </a>
+          </div>
+
           <h1>HEPTACORENET</h1>
-          <p>Welcome to the center of innovation! <br> Discover our revolutionary technologies and solutions that will shape the future.</p>
+          <p>
+            Welcome to the center of innovation! <br>
+            Discover our revolutionary technologies and solutions that will shape the future.
+          </p>
+
         </div>
       </section>
 
       <!-- One -->
       <section id="one" class="wrapper style2 spotlights">
         <section>
-          <a href="#" class="image"><img src="images/11.webp" alt="" data-position="center center" /></a>
+          <a href="#" class="image">
+            <img src="images/Mission.jpg" alt="" loading="lazy">
+          </a>
           <div class="content">
             <div class="inner">
               <h2>OUR MISSION</h2>
-              <p>Driven by innovation and excellence, our mission is to transform your vision into reality through cutting-edge technology. We blend strategic insight with technical mastery to create immersive multimedia experiences, intelligent AI-driven systems, and scalable digital solutions. Committed to your success, we partner with you to navigate complex challenges, delivering impactful results that elevate your brand and propel your business toward a future of limitless possibilities.</p>
+              <p>
+                Driven by innovation and excellence, our mission is to transform your vision into reality through cutting-edge technology. We blend strategic insight with technical mastery to create immersive multimedia experiences, intelligent AI-driven systems, and scalable digital solutions. Committed to your success, we partner with you to navigate complex challenges, delivering impactful results that elevate your brand and propel your business toward a future of limitless possibilities.
+              </p>
             </div>
           </div>
         </section>
+
         <section>
-          <a href="#" class="image"><img src="images/Expertise.webp" alt="" data-position="top center" /></a>
+          <a href="#" class="image">
+            <img src="images/Expertise.webp" alt="" loading="lazy">
+          </a>
           <div class="content">
             <div class="inner">
               <h2>OUR EXPERTISE</h2>
-              <p>We are a trailblazing technology firm, uniting expertise in cybersecurity, software and web development, networking, artificial intelligence, database management, and multimedia. Our team delivers fortified security solutions, custom-built software, responsive web platforms, resilient network infrastructures, AI-powered innovations, and optimized databases. With precision and creativity, we craft tailored solutions that empower your business to excel in a rapidly evolving digital landscape, ensuring robust performance and measurable outcomes.</p>
+              <p>
+                We are a trailblazing technology firm, uniting expertise in cybersecurity, software and web development, networking, artificial intelligence, database management, and multimedia. Our team delivers fortified security solutions, custom-built software, responsive web platforms, resilient network infrastructures, AI-powered innovations, and optimized databases. With precision and creativity, we craft tailored solutions that empower your business to excel in a rapidly evolving digital landscape, ensuring robust performance and measurable outcomes.
+              </p>
             </div>
           </div>
         </section>
@@ -116,33 +334,42 @@
       <section id="two" class="wrapper style3 fade-up">
         <div class="inner">
           <h2>What we do</h2>
-          <p>Empowering your digital future with cutting-edge tech solutions.<br> From secure cybersecurity and robust networking to innovative software development, our services deliver seamless, scalable, and reliable technology tailored to your business needs.</p>
+          <p>
+            Empowering your digital future with cutting-edge tech solutions.<br>
+            From secure cybersecurity and robust networking to innovative software development, our services deliver seamless, scalable, and reliable technology tailored to your business needs.
+          </p>
+
           <div class="features">
             <section>
               <span class="icon solid major fa-shield-alt"></span>
               <h3>Digital System Security</h3>
               <p>From robust firewalls to proactive threat detection, protecting your digital assets and ensuring business continuity in today’s evolving threat landscape.</p>
             </section>
+
             <section>
               <span class="icon solid major fa-network-wired"></span>
               <h3>Networking</h3>
               <p>Network Designing, Analysis, and Security for stable and protected communication systems, designed to deliver seamless connectivity and optimal performance.</p>
             </section>
+
             <section>
               <span class="icon solid major fa-laptop-code"></span>
               <h3>Web Development</h3>
               <p>We build both static and dynamic websites that are fast, secure, and user-friendly. Crafting powerful digital experiences that elevate your brand and engage your audience.</p>
             </section>
+
             <section>
               <span class="icon solid major fa-photo-video"></span>
               <h3>Multimedia</h3>
               <p>Graphics design, video editing, content creation, and social media management. Blending creativity that helps your brand communicate powerfully across platforms.</p>
             </section>
+
             <section>
               <span class="icon solid major fa-database"></span>
               <h3>Database Management</h3>
               <p>Secure and efficient management of your data through custom-designed database systems and optimization.</p>
             </section>
+
             <section>
               <span class="icon solid major fa-download"></span>
               <h3>Software Installation</h3>
@@ -152,6 +379,66 @@
         </div>
       </section>
 
+      <!-- TEAM SECTION WITH GRID CARDS -->
+      <section id="team" class="wrapper fade-up">
+ <div class="inner team-header">
+  <h2>Meet Our Team</h2>
+  <p>A powerhouse team combining creativity, security, and technology to shape the digital future.</p>
+</div>
+  <!-- Slider only -->
+  <div class="team-slider">
+    <div class="team-track" id="teamTrack">
+      <div class="team-slide">
+        <img src="images/cybersecurity expert.jpeg" alt="Kelvin Simpasa">
+        <div class="team-info">
+          <h3>Kelvin Simpasa</h3>
+          <span>Cybersecurity and digital forensics Expert </span>
+        </div>
+      </div>
+      <div class="team-slide">
+        <img src="images/CEO & FOUNDER.png" alt="Gregory Machiwa">
+        <div class="team-info">
+          <h3>Gregory Machiwa</h3>
+          <span>C.E.O & Founder, Cybersecurity & digital forensics Expert</span>
+        </div>
+      </div>
+      <div class="team-slide">
+        <img src="images/Mimi.jpeg" alt="Heri Wambo">
+        <div class="team-info">
+          <h3>Heri Wambo</h3>
+          <span>Mobile App Developer, Web security  & Digital forensics Examiner</span>
+        </div>
+      </div>
+      <div class="team-slide">
+        <img src="images/Network security Engineer.jpeg" alt="Nicolao">
+        <div class="team-info">
+          <h3>Nocolao Jonathan</h3>
+          <span>Network Technician</span>
+        </div>
+      </div>
+      <div class="team-slide">
+        <img src="images/designer.jpg" alt="Mussa Njechelani">
+        <div class="team-info">
+          <h3>Mussa Njechelani</h3>
+          <span>Web developer & visual content creator</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="team-dots" id="teamDots">
+    <span class="active"></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Mobile Hamburger Button -->
+<div id="mobile-menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
       <!-- Three -->
       <section id="three" class="wrapper style1 fade-up">
         <div class="inner">
@@ -161,13 +448,13 @@
           <div class="split style1">
             <section>
               <form id="contactForm"
-      action="https://formspree.io/f/mvgdooag"
-      method="POST"
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
-      novalidate>
+                    action="https://formspree.io/f/mvgdooag"
+                    method="POST"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    novalidate>
                 <div class="fields">
                   <div class="field half">
                     <label for="name">Name</label>
@@ -221,7 +508,7 @@
     <footer id="footer" class="wrapper style1-alt">
       <div class="inner">
         <ul class="menu">
-          <li>&copy; Heptacorenet All rights reserved 2025-2030.</li>
+          <li>&copy; Heptacorenet All rights reserved 2025–2030.</li>
         </ul>
       </div>
     </footer>
@@ -234,14 +521,14 @@
     <script src="assets/js/breakpoints.min.js" defer></script>
     <script src="assets/js/util.js" defer></script>
     <script src="assets/js/main.js" defer></script>
-  <script>
+<script>
   window.addEventListener("load", () => {
     const form = document.getElementById("contactForm");
     const successMsg = document.getElementById("success-message");
     const button = form.querySelector(".submit");
 
     form.addEventListener("submit", async (e) => {
-      e.preventDefault(); // Stop page reload
+      e.preventDefault();
       button.disabled = true;
       button.textContent = "Sending...";
 
@@ -253,24 +540,15 @@
         });
 
         if (res.ok) {
-  // Clear all form fields
-  form.querySelectorAll("input, textarea").forEach(field => {
-    field.value = "";               // Clear visible content
-    field.setAttribute("value", ""); // Clear any cached value
-    field.blur();                   // Remove focus to prevent autofill
-  });
+          form.reset(); // ✅ THIS IS THE KEY FIX
 
-  // Show success message
-  successMsg.classList.add("show");
-  successMsg.textContent = "✅ Message sent successfully!";
+          successMsg.classList.add("show");
+          successMsg.textContent = "✅ Message sent successfully!";
+          button.disabled = false;
+          button.textContent = "Send Message";
 
-  // Reset button
-  button.disabled = false;
-  button.textContent = "Send Message";
-
-  // Hide success message after 5 seconds
-  setTimeout(() => successMsg.classList.remove("show"), 5000);
-} else {
+          setTimeout(() => successMsg.classList.remove("show"), 5000);
+        } else {
           throw new Error("Server error");
         }
       } catch (error) {
@@ -279,6 +557,34 @@
         button.textContent = "Send Message";
       }
     });
+  });
+</script>
+    <script>
+let index = 0;
+const track = document.getElementById("teamTrack");
+const dots = document.querySelectorAll("#teamDots span");
+
+function showSlide(i) {
+  index = i;
+  track.style.transform = `translateX(-${index * 100}%)`;
+  dots.forEach(d => d.classList.remove("active"));
+  dots[index].classList.add("active");
+}
+
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => showSlide(i));
+});
+
+setInterval(() => {
+  index = (index + 1) % dots.length;
+  showSlide(index);
+}, 5000);
+</script>
+<script>
+  const menuToggle = document.getElementById("mobile-menu-toggle");
+
+  menuToggle.addEventListener("click", () => {
+    document.body.classList.toggle("sidebar-open");
   });
 </script>
   </body>
