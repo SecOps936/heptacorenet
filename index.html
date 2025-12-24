@@ -22,41 +22,42 @@
   display: block;
 }
 
-/* ===== Tablets & Phones: show top nav, hide sidebar ===== */
 @media screen and (max-width: 980px) {
   #sidebar {
-    display: none; /* hide sidebar */
+    display: none;
   }
 
   #mobile-menu-toggle {
-    display: none; /* hide hamburger menu */
+    display: none;
   }
 
   #top-nav {
     display: block;
-    position: fixed;
+    position: absolute; /* not fixed */
     top: 0;
     left: 0;
     width: 100%;
     background: #312450;
     z-index: 2000;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: top 0.3s ease-in-out; /* smooth hide/show */
   }
 
   #top-nav ul {
     display: flex;
     justify-content: space-around;
     margin: 0;
-    padding: 0.8em 0;
+    padding: 0.5em 0; /* reduce padding so text fits */
     list-style: none;
+    font-size: 0.9em; /* smaller font for better fit */
   }
 
   #top-nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    padding: 0.5em 1em;
-    transition: background 0.3s ease;
+    padding: 0.3em 0.8em; /* smaller padding */
+    white-space: nowrap; /* prevent text from wrapping */
   }
 
   #top-nav ul li a:hover {
@@ -64,10 +65,10 @@
     border-radius: 5px;
   }
 
-  /* Add spacing so content isn't hidden under top-nav */
+  /* Make wrapper spacing correct */
   #wrapper {
     margin-left: 0;
-    padding-top: 60px; /* same height as top-nav */
+    padding-top: 0; /* no extra space needed, nav is absolute */
   }
 }
       /* ===== Images ===== */
@@ -636,6 +637,28 @@ setInterval(() => {
   index = (index + 1) % dots.length;
   showSlide(index);
 }, 5000);
+</script>
+<script>
+let lastScroll = 0;
+const topNav = document.getElementById('top-nav');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll <= 0) {
+    topNav.style.top = '0';
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    // scrolling down → hide nav
+    topNav.style.top = '-70px'; 
+  } else {
+    // scrolling up → show nav
+    topNav.style.top = '0';
+  }
+
+  lastScroll = currentScroll;
+});
 </script>
   </body>
 </html>
