@@ -91,17 +91,26 @@
         transform: scale(1.05);
       }
 
-      @media screen and (max-width: 980px) {
-        .header-logo {
-          top: 20px;
-          right: 20px;
-        }
+     /* ===== MOBILE FIX: HEADER LOGO ===== */
+@media screen and (max-width: 768px) {
+  .header-logo {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 0 auto 1em auto;
+    text-align: center;
+  }
 
-        .header-logo img {
-          width: 120px;
-          height: 120px;
-        }
-      }
+  .header-logo img {
+    width: 110px;
+    height: 110px;
+  }
+
+  #intro .inner {
+    padding-top: 1.5em;
+    text-align: center;
+  }
+}
 #team {
   background: linear-gradient(135deg, #6c63ff, #3f3fff);
   padding: 2em 0 2em 0;
@@ -210,13 +219,29 @@
   color: #e0e0ffcc;     /* keep your team section text color */
   font-size: 1.1em;     /* adjust font size if needed */
 }
+/* ===== MOBILE TEAM FIX ===== */
 @media screen and (max-width: 768px) {
   .team-slide {
-    height: 400px;
+    height: auto;
+    padding: 2em 0;
   }
+
+  .team-slide img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+  }
+
+  .team-info {
+    position: relative;
+    background: none;
+    padding: 1em 0 0 0;
+  }
+
   .team-info h3 {
     font-size: 1.2em;
   }
+
   .team-info span {
     font-size: 0.9em;
   }
@@ -257,11 +282,23 @@
     transform: translateX(0);
   }
 }
+#sidebar {
+  z-index: 1500;
+}
+
+#mobile-menu-toggle {
+  z-index: 3000;
+}
     </style>
   </head>
 
   <body>
-
+ <!-- Mobile Hamburger Button -->
+<div id="mobile-menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
     <!-- Sidebar -->
     <section id="sidebar">
       <div class="inner">
@@ -441,13 +478,6 @@
     <span></span>
     <span></span>
   </div>
-
-  <!-- Mobile Hamburger Button -->
-<div id="mobile-menu-toggle">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
       <!-- Three -->
       <section id="three" class="wrapper style1 fade-up">
         <div class="inner">
