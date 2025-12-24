@@ -278,9 +278,9 @@
     transition: transform 0.3s ease;
   }
 
-  body.sidebar-open #sidebar {
-    transform: translateX(0);
-  }
+  body.is-menu-visible #sidebar {
+  transform: translateX(0);
+}
 }
 #sidebar {
   z-index: 1500;
@@ -289,6 +289,18 @@
 #mobile-menu-toggle {
   z-index: 3000;
 }
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 100vh;
+  background: #312450; /* same as theme */
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
     </style>
   </head>
 
@@ -620,10 +632,20 @@ setInterval(() => {
 }, 5000);
 </script>
 <script>
-  const menuToggle = document.getElementById("mobile-menu-toggle");
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("mobile-menu-toggle");
+    const sidebarLinks = document.querySelectorAll("#sidebar a");
 
-  menuToggle.addEventListener("click", () => {
-    document.body.classList.toggle("sidebar-open");
+    menuToggle.addEventListener("click", () => {
+      document.body.classList.toggle("is-menu-visible");
+    });
+
+    // Close sidebar when link is clicked (mobile UX)
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        document.body.classList.remove("is-menu-visible");
+      });
+    });
   });
 </script>
   </body>
