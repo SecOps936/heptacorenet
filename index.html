@@ -158,7 +158,6 @@
     margin: 0 auto 1em auto;
     text-align: center;
   }
-
   .header-logo img {
     width: 110px;
     height: auto;
@@ -214,15 +213,35 @@
   height: 600px; /* adjust height as needed */
 }
 
+/* Desktop & large screens */
 .team-slide img {
-  width: 400px;        /* fixed width */
-  height: 550px;       /* fixed height */
-  object-fit: cover;   /* keeps image proportionate and fills the box */
-  border-radius: 20px; /* slight rounded corners, change to 0 for sharp edges */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* optional shadow */
+  width: 80%;        /* use relative width */
+  max-width: 400px;  /* optional max width */
+  height: auto;      /* auto height to maintain aspect ratio */
+  object-fit: cover; /* keeps image filled nicely */
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   transition: transform 0.3s ease;
 }
 
+/* Tablet / smaller screens */
+@media screen and (max-width: 980px) {
+  .team-slide img {
+    width: 60%;      /* smaller relative size for tablets */
+    max-width: 300px;
+    height: auto;
+  }
+}
+
+/* Mobile phones */
+@media screen and (max-width: 768px) {
+  .team-slide img {
+    width: 80%;      /* almost full width */
+    max-width: 220px;
+    height: auto;
+    border-radius: 50%; /* keep circle style */
+  }
+}
 .team-slide img:hover {
   transform: scale(1.05); /* subtle zoom on hover */
 }
