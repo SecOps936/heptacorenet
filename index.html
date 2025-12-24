@@ -580,42 +580,50 @@
     <script src="assets/js/util.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 <script>
-  window.addEventListener("load", () => {
-    const form = document.getElementById("contactForm");
-    const successMsg = document.getElementById("success-message");
-    const button = form.querySelector(".submit");
+window.addEventListener("load", () => {
+  const form = document.getElementById("contactForm");
+  const successMsg = document.getElementById("success-message");
+  const button = form.querySelector(".submit");
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      button.disabled = true;
-      button.textContent = "Sending...";
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      try {
-        const res = await fetch(form.action, {
-          method: form.method,
-          body: new FormData(form),
-          headers: { Accept: "application/json" },
-        });
+    const emailInput = form.querySelector("#email").value.trim();
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
 
-        if (res.ok) {
-          form.reset(); // ✅ THIS IS THE KEY FIX
+    if (!emailPattern.test(emailInput)) {
+      alert("⚠️ Please enter a valid email address.");
+      return;
+    }
 
-          successMsg.classList.add("show");
-          successMsg.textContent = "✅ Message sent successfully!";
-          button.disabled = false;
-          button.textContent = "Send Message";
+    button.disabled = true;
+    button.textContent = "Sending...";
 
-          setTimeout(() => successMsg.classList.remove("show"), 5000);
-        } else {
-          throw new Error("Server error");
-        }
-      } catch (error) {
-        alert("⚠️ Something went wrong. Please try again.");
+    try {
+      const res = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        form.reset();
+        successMsg.classList.add("show");
+        successMsg.textContent = "✅ Message sent successfully!";
         button.disabled = false;
         button.textContent = "Send Message";
+
+        setTimeout(() => successMsg.classList.remove("show"), 5000);
+      } else {
+        throw new Error("Server error");
       }
-    });
+    } catch (error) {
+      alert("⚠️ Something went wrong. Please try again.");
+      button.disabled = false;
+      button.textContent = "Send Message";
+    }
   });
+});
 </script>
     <script>
 let index = 0;
