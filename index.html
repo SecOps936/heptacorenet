@@ -128,30 +128,29 @@
       }
 
       /* ===== HEADER LOGO (INTRO ONLY) ===== */
-      .header-logo {
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        z-index: 1000;
-      }
+     /* Desktop / Laptop logo */
+.header-logo {
+  position: fixed;      /* keeps it visible on scroll */
+  top: 20px;            /* distance from top */
+  right: 20px;          /* distance from right */
+  z-index: 1000;
+}
 
-      .header-logo img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        object-fit: cover;
-        background: #fff;
-        padding: 10px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-        transition: transform 0.3s ease;
-      }
+.header-logo img {
+  width: 150px;         /* adjust size as needed */
+  height: auto;         /* keeps aspect ratio */
+  border-radius: 15px;  /* optional rounded corners */
+  object-fit: cover;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
 
-      .header-logo img:hover {
-        transform: scale(1.05);
-      }
+.header-logo img:hover {
+  transform: scale(1.05);
+}
 
-     /* ===== MOBILE FIX: HEADER LOGO ===== */
-@media screen and (max-width: 768px) {
+/* Mobile logo (centered) */
+@media screen and (max-width: 980px) {
   .header-logo {
     position: relative;
     top: 0;
@@ -162,14 +161,13 @@
 
   .header-logo img {
     width: 110px;
-    height: 110px;
+    height: auto;
   }
-
+}
   #intro .inner {
     padding-top: 1.5em;
     text-align: center;
   }
-}
 #team {
   background: linear-gradient(135deg, #6c63ff, #3f3fff);
   padding: 2em 0 2em 0;
@@ -217,15 +215,16 @@
 }
 
 .team-slide img {
-  width: 400px;        /* fixed width for uniform circles */
-  height: 550px;       /* fixed height for uniform circles */
-  object-fit: cover;   /* keep image proportionate */
-  border-radius: 50%;  /* makes the image a circle */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* optional: nice shadow */
+  width: 400px;        /* fixed width */
+  height: 550px;       /* fixed height */
+  object-fit: cover;   /* keeps image proportionate and fills the box */
+  border-radius: 20px; /* slight rounded corners, change to 0 for sharp edges */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* optional shadow */
   transition: transform 0.3s ease;
 }
+
 .team-slide img:hover {
-  transform: scale(1.05); /* subtle hover zoom */
+  transform: scale(1.05); /* subtle zoom on hover */
 }
 .team-info {
   position: absolute;
@@ -256,8 +255,8 @@
 }
 
 .team-dots span {
-  width: 14px;
-  height: 14px;
+  width: 9px;   /* smaller dot */
+  height: 9px;  /* smaller dot */
   background: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -267,8 +266,9 @@
 
 .team-dots span.active {
   background: #fff;
-  transform: scale(1.2);
+  transform: scale(1.1); /* slightly smaller active zoom */
 }
+
 .full-width-paragraph {
   width: 100%;          /* full width */
   max-width: none;      /* remove any max-width */
@@ -303,6 +303,32 @@
 
   .team-info span {
     font-size: 0.9em;
+  }
+}
+.team-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  border: none;
+  font-size: 2em;
+  padding: 0.3em 0.6em;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+.team-arrow.left {
+  left: 9px;
+}
+.team-arrow.right {
+  right: 9px;
+}
+
+/* Optional: hide arrows on mobile if desired */
+@media screen and (max-width: 480px) {
+  .team-arrow {
+    font-size: 1.5em;
+    padding: 0.2em 0.4em;
   }
 }
     </style>
@@ -448,21 +474,21 @@
   <div class="team-slider">
     <div class="team-track" id="teamTrack">
       <div class="team-slide">
-        <img src="images/cybersecurity expert.jpeg"
-     alt="Kelvin Simpasa"
-     loading="lazy">
-        <div class="team-info">
-          <h3>Kelvin Simpasa</h3>
-          <span>Cybersecurity and digital forensics Expert </span>
-        </div>
-      </div>
-      <div class="team-slide">
        <img src="images/CEO & FOUNDER.png"
      alt="Gregory Machiwa"
      loading="lazy">
         <div class="team-info">
           <h3>Gregory Machiwa</h3>
           <span>C.E.O & Founder, Cybersecurity & digital forensics Expert</span>
+        </div>
+      </div>
+      <div class="team-slide">
+        <img src="images/cybersecurity expert.jpeg"
+     alt="Kelvin Simpasa"
+     loading="lazy">
+        <div class="team-info">
+          <h3>Kelvin Simpasa</h3>
+          <span>Cybersecurity and digital forensics Expert </span>
         </div>
       </div>
       <div class="team-slide">
@@ -489,6 +515,8 @@
         </div>
       </div>
     </div>
+    <button class="team-arrow left" id="arrowLeft">&#10094;</button>
+  <button class="team-arrow right" id="arrowRight">&#10095;</button>
   </div>
   <div class="team-dots" id="teamDots">
     <span class="active"></span>
@@ -645,6 +673,69 @@ setInterval(() => {
   index = (index + 1) % dots.length;
   showSlide(index);
 }, 5000);
+const arrowLeft = document.getElementById("arrowLeft");
+const arrowRight = document.getElementById("arrowRight");
+
+// Arrow click events
+arrowLeft.addEventListener("click", () => {
+  index = index > 0 ? index - 1 : track.children.length - 1;
+  showSlide(index);
+});
+
+arrowRight.addEventListener("click", () => {
+  index = (index + 1) % track.children.length;
+  showSlide(index);
+});
+// Swipe / Drag code stays the same
+let startX = 0;
+let isDragging = false;
+
+// --- Touch events ---
+track.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+  isDragging = true;
+});
+
+track.addEventListener("touchend", (e) => {
+  if (!isDragging) return;
+  isDragging = false;
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if (diff > 50) {
+    index = index > 0 ? index - 1 : track.children.length - 1;
+    showSlide(index);
+  } else if (diff < -50) {
+    index = (index + 1) % track.children.length;
+    showSlide(index);
+  }
+});
+
+// --- Mouse events ---
+track.addEventListener("mousedown", (e) => {
+  startX = e.clientX;
+  isDragging = true;
+});
+
+track.addEventListener("mouseup", (e) => {
+  if (!isDragging) return;
+  isDragging = false;
+  const endX = e.clientX;
+  const diff = endX - startX;
+
+  if (diff > 50) {
+    index = index > 0 ? index - 1 : track.children.length - 1;
+    showSlide(index);
+  } else if (diff < -50) {
+    index = (index + 1) % track.children.length;
+    showSlide(index);
+  }
+});
+
+// Optional: prevent text/image selection while dragging
+track.addEventListener("mousemove", (e) => {
+  if (isDragging) e.preventDefault();
+});
 </script>
 <script>
 let lastScroll = 0;
