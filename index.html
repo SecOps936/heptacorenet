@@ -12,6 +12,64 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
+      /* ===== Default: hide top nav, show sidebar ===== */
+#top-nav {
+  display: none;
+}
+
+/* Sidebar for desktops/laptops */
+#sidebar {
+  display: block;
+}
+
+/* ===== Tablets & Phones: show top nav, hide sidebar ===== */
+@media screen and (max-width: 980px) {
+  #sidebar {
+    display: none; /* hide sidebar */
+  }
+
+  #mobile-menu-toggle {
+    display: none; /* hide hamburger menu */
+  }
+
+  #top-nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #312450;
+    z-index: 2000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  #top-nav ul {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0.8em 0;
+    list-style: none;
+  }
+
+  #top-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5em 1em;
+    transition: background 0.3s ease;
+  }
+
+  #top-nav ul li a:hover {
+    background: #6c63ff;
+    border-radius: 5px;
+  }
+
+  /* Add spacing so content isn't hidden under top-nav */
+  #wrapper {
+    margin-left: 0;
+    padding-top: 60px; /* same height as top-nav */
+  }
+}
       /* ===== Images ===== */
       #one .image img {
         width: 100%;
@@ -246,71 +304,10 @@
     font-size: 0.9em;
   }
 }
-/* ===== MOBILE HAMBURGER MENU ===== */
-#mobile-menu-toggle {
-  display: none;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 35px;
-  height: 25px;
-  z-index: 2000;
-  cursor: pointer;
-}
-
-#mobile-menu-toggle span {
-  display: block;
-  height: 4px;
-  background: #fff;
-  margin: 5px 0;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-/* Show only on tablets & phones */
-@media screen and (max-width: 980px) {
-  #mobile-menu-toggle {
-    display: block;
-  }
-
-  #sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-
-  body.is-menu-visible #sidebar {
-  transform: translateX(0);
-}
-}
-#sidebar {
-  z-index: 1500;
-}
-
-#mobile-menu-toggle {
-  z-index: 3000;
-}
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 270px;
-  height: 100vh;
-  background: #312450; /* same as theme */
-  overflow-y: auto;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-}
-
     </style>
   </head>
 
   <body>
- <!-- Mobile Hamburger Button -->
-<div id="mobile-menu-toggle">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
     <!-- Sidebar -->
     <section id="sidebar">
       <div class="inner">
@@ -325,7 +322,16 @@
         </nav>
       </div>
     </section>
-
+    <!-- Top Navigation for mobile/tablets -->
+<nav id="top-nav">
+  <ul>
+    <li><a href="#intro">Home</a></li>
+    <li><a href="#one">About Us</a></li>
+    <li><a href="#two">Services</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#three">Contact Us</a></li>
+  </ul>
+</nav>
     <!-- Wrapper -->
     <div id="wrapper">
 
@@ -630,23 +636,6 @@ setInterval(() => {
   index = (index + 1) % dots.length;
   showSlide(index);
 }, 5000);
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const menuToggle = document.getElementById("mobile-menu-toggle");
-    const sidebarLinks = document.querySelectorAll("#sidebar a");
-
-    menuToggle.addEventListener("click", () => {
-      document.body.classList.toggle("is-menu-visible");
-    });
-
-    // Close sidebar when link is clicked (mobile UX)
-    sidebarLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        document.body.classList.remove("is-menu-visible");
-      });
-    });
-  });
 </script>
   </body>
 </html>
