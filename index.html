@@ -79,7 +79,7 @@
 
       /* ===== Wrapper ===== */
       #wrapper {
-        margin-left: 270px;
+        margin-left: 400px;
       }
       @media screen and (max-width: 980px) {
         #wrapper {
@@ -134,11 +134,10 @@
 }
 
 .header-logo img {
-  width: 150px;         /* adjust size as needed */
+  width: 250px;         /* adjust size as needed */
   height: auto;         /* keeps aspect ratio */
   border-radius: 15px;  /* optional rounded corners */
   object-fit: cover;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
   transition: transform 0.3s ease;
 }
 
@@ -352,8 +351,13 @@
 
   <body>
     <!-- Sidebar -->
+     
     <section id="sidebar">
       <div class="inner">
+         <div class="header-logo">
+              <img src="images/hepta1.png" 
+     alt="Heptacorenet Logo" style="margin-right: 0;">
+         </div>
         <nav>
           <ul>
             <li><a href="#intro">Home</a></li>
@@ -385,13 +389,10 @@
           <!-- Header Logo -->
           <div class="header-logo">
             <a href="#intro">
-              <img src="images/Heptacorenet No BG.png"
-     alt="Heptacorenet Logo"
-     fetchpriority="high"
-     decoding="async">
             </a>
           </div>
           <h1>HEPTACORENET</h1>
+          <p><i>"Transforming Challenges Into Solutions"</i></p>
           <p>
             Welcome to the center of innovation! <br>
             Discover our revolutionary technologies and solutions that will shape the future.
@@ -490,7 +491,7 @@
   <div class="team-slider">
     <div class="team-track" id="teamTrack">
       <div class="team-slide">
-       <img src="images/CEO & FOUNDER.png"
+       <img src="images/grego.jpeg"
      alt="Gregory Machiwa"
      loading="lazy">
         <div class="team-info">
@@ -499,7 +500,7 @@
         </div>
       </div>
       <div class="team-slide">
-        <img src="images/cybersecurity expert.jpeg"
+        <img src="images/kelvin.jpeg"
      alt="Kelvin Simpasa"
      loading="lazy">
         <div class="team-info">
@@ -508,7 +509,7 @@
         </div>
       </div>
       <div class="team-slide">
-       <img src="images/Mimi.jpeg"
+       <img src="images/heri.jpeg"
      alt="Heri Wambo"
      loading="lazy">
         <div class="team-info">
@@ -517,17 +518,24 @@
         </div>
       </div>
       <div class="team-slide">
-        <img src="images/Network security Engineer.jpeg" alt="Nicolao" loading="lazy">
+        <img src="images/nico.jpeg" alt="Nicolao" loading="lazy">
         <div class="team-info">
           <h3>Nicolao Jonathan</h3>
-          <span>Network Technician</span>
+          <span>Network Engineer & NOC Specialist</span>
         </div>
       </div>
       <div class="team-slide">
-        <img src="images/designer.jpg" alt="Mussa Njechelani" loading="lazy">
+        <img src="images/mussa.jpeg" alt="Mussa Njechelani" loading="lazy">
         <div class="team-info">
           <h3>Mussa Njechelani</h3>
           <span>Web developer & visual content creator</span>
+        </div>
+      </div>
+       <div class="team-slide">
+        <img src="images/mudrick.jpeg" alt="Mudrick" loading="lazy">
+        <div class="team-info">
+          <h3>Mudrick</h3>
+          <span>Graphics Designer & Multimedia Animation</span>
         </div>
       </div>
     </div>
@@ -536,6 +544,7 @@
   </div>
   <div class="team-dots" id="teamDots">
     <span class="active"></span>
+    <span></span>
     <span></span>
     <span></span>
     <span></span>
