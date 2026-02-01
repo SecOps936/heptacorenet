@@ -79,7 +79,7 @@
 
       /* ===== Wrapper ===== */
       #wrapper {
-        margin-left: 400px;
+        margin-left: 300px;
       }
       @media screen and (max-width: 980px) {
         #wrapper {
@@ -124,16 +124,16 @@
         opacity: 1;
       }
 
-      /* ===== HEADER LOGO (INTRO ONLY) ===== */
+      /* ===== SIDEBAR LOGO ===== */
      /* Desktop / Laptop logo */
-.header-logo {
-  position: fixed;      /* keeps it visible on scroll */
+.sidebar-logo {
+  position: relative;      /* keeps it visible on scroll */
   top: 20px;            /* distance from top */
   right: 20px;          /* distance from right */
   z-index: 1000;
 }
 
-.header-logo img {
+.sidebar-logo img {
   width: 250px;         /* adjust size as needed */
   height: auto;         /* keeps aspect ratio */
   border-radius: 15px;  /* optional rounded corners */
@@ -141,20 +141,20 @@
   transition: transform 0.3s ease;
 }
 
-.header-logo img:hover {
+.sidebar-logo img:hover {
   transform: scale(1.05);
 }
 
 /* Mobile logo (centered) */
 @media screen and (max-width: 980px) {
-  .header-logo {
+  .sidebar-logo {
     position: relative;
     top: 0;
     right: 0;
     margin: 0 auto 1em auto;
     text-align: center;
   }
-  .header-logo img {
+  .sidebar-logo img {
     width: 110px;
     height: auto;
   }
@@ -261,17 +261,15 @@
   color: #d0d0ff;
   font-size: 0.95em;
 }
-
 .team-dots {
   margin-top: 1em;
   display: flex;
   justify-content: center;
   gap: 8px;
 }
-
 .team-dots span {
-  width: 9px;   /* smaller dot */
-  height: 9px;  /* smaller dot */
+  width: 5px;   /* smaller dot */
+  height: 5px;  /* smaller dot */
   background: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -299,23 +297,19 @@
     height: auto;
     padding: 2em 0;
   }
-
   .team-slide img {
     width: 220px;
     height: 220px;
     border-radius: 50%;
   }
-
   .team-info {
     position: relative;
     background: none;
     padding: 1em 0 0 0;
   }
-
   .team-info h3 {
     font-size: 1.2em;
   }
-
   .team-info span {
     font-size: 0.9em;
   }
@@ -326,24 +320,70 @@
   transform: translateY(-50%);
   color: #fff;
   border: none;
-  font-size: 2em;
-  padding: 0.3em 0.6em;
+  font-size: 1.5em;
+  padding: 0.15em 0.3em;
   cursor: pointer;
   z-index: 10;
   transition: background 0.3s;
 }
 .team-arrow.left {
-  left: 9px;
+  left: 5px;
 }
 .team-arrow.right {
-  right: 9px;
+  right: 5px;
 }
-
 /* Optional: hide arrows on mobile if desired */
 @media screen and (max-width: 480px) {
   .team-arrow {
     font-size: 1.5em;
-    padding: 0.2em 0.4em;
+    padding: 0.1em 0.2em;
+  }
+}
+#typing-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  border-right: 3px solid #222;
+  padding-right: 6px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#fade-text {
+  margin-top: 10px;
+  font-size: 18px;
+  color: white;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+#typing-text {
+  font-size: clamp(18px, 4vw, 26px);
+}
+
+#fade-text {
+  font-size: clamp(15px, 3.5vw, 18px);
+}
+/* ===== HEADER LOGO ===== */
+.header-logo {
+  display: none; /* hide by default (desktop) */
+  text-align: center;
+  margin-bottom: 0.8em;
+}
+
+.header-logo img {
+  width: 130px;
+  height: auto;
+}
+
+/* ===== SHOW HEADER LOGO ONLY ON TABLET & PHONES ===== */
+@media screen and (max-width: 980px) {
+  .header-logo {
+    display: block;
+  }
+
+  #sidebar {
+    display: none; /* hide sidebar */
   }
 }
     </style>
@@ -354,7 +394,7 @@
      
     <section id="sidebar">
       <div class="inner">
-         <div class="header-logo">
+         <div class="sidebar-logo">
               <img src="images/hepta1.png" 
      alt="Heptacorenet Logo" style="margin-right: 0;">
          </div>
@@ -371,36 +411,33 @@
     </section>
     <!-- Top Navigation for mobile/tablets -->
 <nav id="top-nav">
-  <ul>
-    <li><a href="#intro">Home</a></li>
-    <li><a href="#one">About Us</a></li>
-    <li><a href="#two">Services</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#three">Contact</a></li>
-  </ul>
+  <div class="top-nav-inner">
+    <ul class="nav-links">
+      <li><a href="#intro">Home</a></li>
+      <li><a href="#one">About Us</a></li>
+      <li><a href="#two">Services</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#three">Contact</a></li>
+    </ul>
+  </div>
 </nav>
     <!-- Wrapper -->
     <div id="wrapper">
 
       <!-- Intro -->
-      <section id="intro" class="wrapper style1 fullscreen fade-up">
-        <div class="inner">
+     <section id="intro" class="wrapper style1 fullscreen fade-up">
+  <div class="inner">
 
-          <!-- Header Logo -->
-          <div class="header-logo">
-            <a href="#intro">
-            </a>
-          </div>
-          <h1>HEPTACORENET</h1>
-          <p><i>"Transforming Challenges Into Solutions"</i></p>
-          <p>
-            Welcome to the center of innovation! <br>
-            Discover our revolutionary technologies and solutions that will shape the future.
-          </p>
+    <!-- Header Logo for small devices -->
+    <div class="header-logo">
+      <img src="images/hepta1.png" alt="Heptacorenet Logo">
+    </div>
 
-        </div>
-      </section>
-
+    <h1><b>HEPTACORENET</b></h1>
+    <h2 id="typing-text"></h2>
+    <p id="fade-text"></p>
+  </div>
+</section>
       <!-- One -->
       <section id="one" class="wrapper style2 spotlights">
         <section>
@@ -496,7 +533,7 @@
      loading="lazy">
         <div class="team-info">
           <h3>Gregory Machiwa</h3>
-          <span>C.E.O & Founder, Cybersecurity & digital forensics Expert</span>
+          <span>Cybersecurity Analyst</span>
         </div>
       </div>
       <div class="team-slide">
@@ -505,7 +542,7 @@
      loading="lazy">
         <div class="team-info">
           <h3>Kelvin Simpasa</h3>
-          <span>Cybersecurity and digital forensics Expert </span>
+          <span>Cybersecurity Analyst</span>
         </div>
       </div>
       <div class="team-slide">
@@ -514,28 +551,28 @@
      loading="lazy">
         <div class="team-info">
           <h3>Heri Wambo</h3>
-          <span>Mobile App Developer, Web security  & Digital forensics Examiner</span>
+          <span>full-stack developer</span>
         </div>
       </div>
       <div class="team-slide">
         <img src="images/nico.jpeg" alt="Nicolao" loading="lazy">
         <div class="team-info">
           <h3>Nicolao Jonathan</h3>
-          <span>Network Engineer & NOC Specialist</span>
+          <span>Network Engineer</span>
         </div>
       </div>
       <div class="team-slide">
         <img src="images/mussa.jpeg" alt="Mussa Njechelani" loading="lazy">
         <div class="team-info">
           <h3>Mussa Njechelani</h3>
-          <span>Web developer & visual content creator</span>
+          <span>Creative Developer</span>
         </div>
       </div>
        <div class="team-slide">
         <img src="images/mudrick.jpeg" alt="Mudrick" loading="lazy">
         <div class="team-info">
-          <h3>Mudrick</h3>
-          <span>Graphics Designer & Multimedia Animation</span>
+          <h3>Mudrick Shaweji</h3>
+          <span>Multimedia Designer</span>
         </div>
       </div>
     </div>
@@ -784,6 +821,31 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 </script>
+<script>
+  const slogan = "Transforming Challenges Into Solutions";
+  const description = 
+    "Welcome to the center of innovation! Discover our revolutionary technologies and solutions that will shape the future.";
+
+  let i = 0;
+
+  function typeSlogan() {
+    if (i < slogan.length) {
+      document.getElementById("typing-text").textContent += slogan.charAt(i);
+      i++;
+      setTimeout(typeSlogan, 90);
+    } else {
+      // remove cursor after typing
+      document.getElementById("typing-text").style.borderRight = "none";
+
+      // fade in paragraph
+      document.getElementById("fade-text").textContent = description;
+      document.getElementById("fade-text").style.opacity = 1;
+    }
+  }
+
+  window.onload = typeSlogan;
+</script>
+
   </body>
 
 </html>
